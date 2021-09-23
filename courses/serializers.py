@@ -24,6 +24,8 @@ class RatingSerializers(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
 
+    ratings = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
     class Meta:
         model = Course
         fields = (
@@ -32,4 +34,5 @@ class CourseSerializer(serializers.ModelSerializer):
             'url',
             'created',
             'active',
+            'ratings'
         )

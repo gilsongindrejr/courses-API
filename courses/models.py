@@ -14,16 +14,23 @@ class Course(Base):
     title = models.CharField(max_length=255)
     url = models.URLField(unique=True)
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return self.title
 
 
 class Rating(Base):
-    course = models.ForeignKey(Course, related_name='rating', on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, related_name='ratings', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     comment = models.TextField(blank=True, default='')
     rating = models.DecimalField(max_digits=2, decimal_places=1)
+
+    class Meta:
+        unique_together = ['email', 'course']
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name} rated the course {self.course} with {self.rating}'
