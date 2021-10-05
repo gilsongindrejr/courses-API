@@ -21,6 +21,11 @@ class RatingSerializers(serializers.ModelSerializer):
             'active',
         )
 
+    def validate_rating(self, value):
+        if 1 < value < 6:
+            return value
+        raise serializers.ValidationError('The rating must be in between 1 and 5')
+
 
 class CourseSerializer(serializers.ModelSerializer):
 
