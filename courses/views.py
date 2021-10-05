@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from .models import Course, Rating
 from .serializers import CourseSerializer, RatingSerializers
+from .permissions import AuthenticatedReadOnly, AuthenticatedPostOnly
 
 """
 API V1
@@ -53,6 +54,7 @@ API V2
 
 
 class CourseViewSet(viewsets.ModelViewSet):
+    permission_classes = (AuthenticatedReadOnly,)
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
@@ -72,5 +74,6 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 
 class RatingViewSet(viewsets.ModelViewSet):
+    permission_classes = (AuthenticatedPostOnly,)
     queryset = Rating.objects.all()
     serializer_class = RatingSerializers
