@@ -24,5 +24,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('rest_framework.urls')),
 ]
-
-from rest_framework import urls
