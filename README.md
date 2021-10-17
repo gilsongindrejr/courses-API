@@ -1,8 +1,8 @@
 # Courses-API
 
 Project made to learn Django Rest Framework.\
-This project is a movie rating system, admins can add movies and users can add reviews.\
-The API returns the movies and ratings.
+This project is a course rating system, admins can add courses and users can add reviews.\
+The API returns the courses and ratings.
 
 # Running backend server
 
